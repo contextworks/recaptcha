@@ -10,7 +10,7 @@ class Recaptcha {
 	public static function validate()
 	{
 		$resp = recaptcha_check_answer( Kohana::$config->load('recaptcha')->private,
-			$_SERVER["REMOTE_ADDR"],
+			Request::$client_ip,
 			$_POST["recaptcha_challenge_field"],
 			$_POST["recaptcha_response_field"]);
 
